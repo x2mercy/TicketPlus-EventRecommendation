@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #434343;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+ul {
+  list-style: none;
+}
+
+.top-header {
+  width: 100%;
+  height: 60px;
+  background: #DF574B;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  box-shadow: 0px 2px 10px #333;
+}
+
+.avatar {
+  background-color: white;
+  color: #333;
+  border-radius: 50%;
+  height: 40px;
+  margin-left: 20px;
+  padding-left: 9px;
+  padding-top:5px;
+  width: 40px;
+}
+
+.top-nav a {
+  margin-left: 20px;
+  color: #F9F9F9;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.container > header {
+  height: 250px;
+  background: url('http://prophoto.com.cy/wp-content/galleries/food/food-restaurant-photographer-cyprus-10.jpg') no-repeat 50% 50%;  
+  display: flex;
+  align-items: center;
+  background-size: 100%;
+}
+
+.container > header p {
+  font-weight: 400;
+  font-size: 2em;
+  margin-left: 220px;
+  border-left: 1px solid white;
+  padding-left: 5px;
+}
+
+.container > header span {
+  color: #FBAF41;
+}
+
+
+.main-section {
+  background: #F3BB43;
+  //height: 500px; // to be changed
+}
+
+.main-section aside {
+  float: left;
+  width: 180px;
+}
+
+.nav-icon {
+  color: #624630;
+  padding: 20px;
+  text-align: center;
+}
+
+.main-nav-btn {
+  background: none;
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  border-top: 1px solid white;
+  text-align: left;
+}
+
+.main-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #624630;
+}
+
+.main-nav-btn.active {
+  background: #F2EBD9;
+  color: #624630;
+}
+
+.main-nav-btn i{
+  width: 20px;
+}
+
+
+.restaurant-list {
+  list-style:  none;
+  margin-left: 180px;
+  min-height:  250px;
+  padding:     10px;
+  background:  #F2EBD9;
+}
+
+.restaurant {
+  display: flex;
+  align-items: center;
+  color: #624630;
+  border-bottom: 1px solid white;
+  margin: 10px;
+  padding: 15px;
+}
+
+.restaurant:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.restaurant:last-child {
+  border: none;
+}
+
+.restaurant img {
+  border: 1px solid #FFFFFF;
+  height: 80px;
+  width:  80px;
+}
+
+.restaurant div:first-of-type {
+  flex: 1;
+  margin-left:  10px;
+  margin-right: 10px;
+}
+
+.restaurant-name {
+  color: #624630;
+  font-weight:     400;
+  text-decoration: none;
+}
+
+.restaurant-name:hover {
+  text-decoration: underline;
+}
+
+.restaurant-address {
+  line-height: 20px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.stars {
+  padding-top: 10px;
+}
+
+footer {
+  background: #434343;
+  font-size:  0.8em;
+  height:     200px;
+  position:   relative;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer p.title {
+  font-size: 1.2em;
+  padding:   15px;
+}
+
+footer ul {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+footer ul li {
+   flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
