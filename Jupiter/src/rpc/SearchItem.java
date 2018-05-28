@@ -2,6 +2,7 @@ package rpc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import db.DBConnection;
+import db.DBConnectionFactory;
 import entity.Item;
 import external.TicketMasterAPI;
 
@@ -83,14 +86,21 @@ public class SearchItem extends HttpServlet {
 		out.close();
 		*/
 		//use helper function
-		JSONArray array = new JSONArray();
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lon = Double.parseDouble(request.getParameter("lon"));
+		String term = request.getParameter("term");
+		
+		DBConnection connection = DBConnectionFactory.getConnection();
+		List<Item> items = connection.searchitems(lat, lon, term);
+		connection.close();
+		
+		List<JSONObject> list = new ArrayList<>();
+		//JSONArray array = new JSONArray();
 		try {
 //			array.put(new JSONObject().put("username", "abcd"));
 //			array.put(new JSONObject().put("username", "1234"));
-			double lat = Double.parseDouble(request.getParameter("lat"));
-			double lon = Double.parseDouble(request.getParameter("lon"));
-			String keyword = request.getParameter("term");
 			
+			/*
 			TicketMasterAPI tmAPI = new TicketMasterAPI();
 			List<Item> items = tmAPI.search(lat, lon, keyword);
 			
@@ -98,9 +108,16 @@ public class SearchItem extends HttpServlet {
 				JSONObject obj = item.toJSONObject();
 				array.put(obj);
 			}
+			*/
+			for(Item item : items) {
+				//add a thin version of item object
+				JSONObject obj = item.toJSONObject();
+				list.add(obj);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		JSONArray array = new JSONArray(list);
 		RpcHelper.writeJsonArray(response, array);
 	}
 
