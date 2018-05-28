@@ -1,1 +1,1 @@
-# RestaurantRecommendation
+# EventRecommendation
