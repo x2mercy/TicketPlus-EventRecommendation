@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -86,13 +87,15 @@ public class SearchItem extends HttpServlet {
 		out.close();
 		*/
 		//use helper function
+		String userId = request.getParameter("user_id");
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lon = Double.parseDouble(request.getParameter("lon"));
 		String term = request.getParameter("term");
 		
-		DBConnection connection = DBConnectionFactory.getConnection();
-		List<Item> items = connection.searchitems(lat, lon, term);
-		connection.close();
+		DBConnection conn = DBConnectionFactory.getConnection();
+		List<Item> items = conn.searchitems(lat, lon, term);
+		Set<String> favorite = conn.getFavoriteItemIds(userId);
+		conn.close();
 		
 		List<JSONObject> list = new ArrayList<>();
 		//JSONArray array = new JSONArray();
@@ -112,6 +115,9 @@ public class SearchItem extends HttpServlet {
 			for(Item item : items) {
 				//add a thin version of item object
 				JSONObject obj = item.toJSONObject();
+				//check if this is a favorite one
+				//this field is requeired by frontend correctly display favorite items
+				obj.put("favorite", favorite.contains(item.getItemId()));
 				list.add(obj);
 			}
 		}catch(Exception e) {
