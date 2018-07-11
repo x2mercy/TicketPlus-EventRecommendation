@@ -1,6 +1,8 @@
 package rpc;
 import java.io.BufferedReader;
+import entity.Item;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,4 +51,16 @@ public class RpcHelper {
 		}
 		return null;
 	}
+	  public static JSONArray getJSONArray(List<Item> items) {
+		    JSONArray result = new JSONArray();
+		    try {
+		      for (Item item : items) {
+		        result.put(item.toJSONObject());
+		      }
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    }
+		    return result;
+		  }
+
 }

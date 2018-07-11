@@ -100,6 +100,8 @@ public class Item {
 			private String imageUrl;
 			private String url;
 			private double distance;
+			private double latitude;
+			private double longitude;
 			
 			public void setItemId(String itemId) {
 				this.itemId = itemId;
@@ -128,6 +130,14 @@ public class Item {
 			
 			public Item build() {
 				return new Item(this);
+			}
+			public void setLatitude(double latitude) {
+				// TODO Auto-generated method stub
+				this.latitude = latitude;
+			}
+			public void setLongitude(double longitude) 
+			{
+				this.longitude = longitude;
 			}
 			
 		}
